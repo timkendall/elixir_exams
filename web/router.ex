@@ -24,9 +24,11 @@ defmodule Wimf.Router do
     pipe_through :api
 
     # RESTful resources
+    resources "/texts", TextController, except: [:new, :edit]
+    resources "/replies", ReplyController, except: [:new, :edit]
     resources "/exam_times", ExamTimeController, except: [:new, :edit]
 
-    # Special route for Twillio webhook
+    # Special route for Twilio webhook
     post "/webhooks/texts/incoming", SMSController, :incoming
   end
 end

@@ -1,17 +1,15 @@
-defmodule Wimf.ExamTime do
+defmodule Wimf.Reply do
   use Wimf.Web, :model
+  alias Wimf.Text
 
-  schema "exam_times" do
-    field :month, :integer
-    field :day_of_month, :integer
-    field :day_of_week, :integer
-    field :minutes, :integer
-    field :course_id_matches, {:array, :string}
+  schema "replies" do
+    field :message, :string
+    belongs_to :text, Text
 
     timestamps
   end
 
-  @required_fields ~w(month day_of_month day_of_week minutes)
+  @required_fields ~w(message)
   @optional_fields ~w()
 
   @doc """

@@ -9,8 +9,7 @@ demonstrates basic CRUD operations by providing a minimal UI for adding final ex
 It also demonstrates [Phoenix's awesome Channels](http://www.phoenixframework.org/docs/channels) with a live feed of incoming
 SMS messages.
 
-I had a lot of fun with this project and look forward to using Elixir/Phoenix in
-more of my projects!
+Aside from a few stumbling blocks, Elixir and Phoenix were a joy to work with.
 
 ## TODO
 
@@ -18,6 +17,7 @@ more of my projects!
 - [ ] Exam time matching and response logic
 - [ ] Create simple CRUD management console at `/dashboard`
 - [ ] Dockerize
+- [ ] Rename to `elixir-exams` or `elixir_exams`?
 
 ## Running
 
