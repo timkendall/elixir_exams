@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Response>
-    <Message>Hello! Your message: <%= @reply %> -From Elixir</Message>
+    <Message>
+      <Body><%= @reply %> -From Elixir</Body>
+    </Message>
 </Response>

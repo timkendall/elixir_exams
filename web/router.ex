@@ -30,5 +30,8 @@ defmodule Wimf.Router do
 
     # Special route for Twilio webhook
     post "/webhooks/texts/incoming", SMSController, :incoming
+
+    # Testing .ics file
+    get "/ics/download", ICSController, :index
   end
 end

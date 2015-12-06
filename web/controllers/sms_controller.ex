@@ -8,12 +8,14 @@ defmodule Wimf.SMSController do
 
   def craft_reply(text) do
     # Create new `Reply`
-    changeset = Reply.changeset(%Reply{}, %{
-      message: @default_reply,
-      text: text })
+    #changeset = Reply.changeset(%Reply{}, %{
+      #message: @default_reply,
+      #text_id: text.id })
+
+    reply = Ecto.Model.build(text, :reply, message: @default_reply)
 
     # Save it
-    Repo.insert(changeset)
+    Repo.insert(reply)
   end
 
   def incoming(conn, params) do

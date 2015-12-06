@@ -27,7 +27,10 @@ defmodule Wimf.TextController do
   end
 
   def show(conn, %{"id" => id}) do
-    text = Repo.get!(Text, id)
+    text = Text
+      |> Repo.get!(id)
+      |> Repo.preload(:reply)
+
     render(conn, "show.json", text: text)
   end
 

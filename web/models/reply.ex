@@ -9,7 +9,7 @@ defmodule Wimf.Reply do
     timestamps
   end
 
-  @required_fields ~w(message)
+  @required_fields ~w(message text)
   @optional_fields ~w()
 
   @doc """

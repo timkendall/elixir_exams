@@ -6,6 +6,8 @@ defmodule Wimf.TextView do
   end
 
   def render("show.json", %{text: text}) do
+    IO.inspect text
+    # ':reply' is getting populated but not rendered
     %{data: render_one(text, Wimf.TextView, "text.json")}
   end
 

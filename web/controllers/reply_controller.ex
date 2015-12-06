@@ -27,7 +27,11 @@ defmodule Wimf.ReplyController do
   end
 
   def show(conn, %{"id" => id}) do
+    #reply = Repo.get!(Reply, id)
+
     reply = Repo.get!(Reply, id)
+    reply = Repo.preload(reply, :text)
+
     render(conn, "show.json", reply: reply)
   end
 
