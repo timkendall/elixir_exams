@@ -1,4 +1,4 @@
-# WiMF
+# Elixir Exams
 
 This is a small app I made to learn Elixir and the Phoenix framework. It works by
 using [Twilio](https://www.twilio.com/) to receive SMS messages and match against
@@ -17,15 +17,15 @@ Aside from a few stumbling blocks, Elixir and Phoenix were a joy to work with.
 - [ ] Exam time matching and response logic
 - [ ] Create simple CRUD management console at `/dashboard`
 - [ ] Dockerize
-- [ ] Rename to `elixir-exams` or `elixir_exams`?
 
 ## Running
 
 Make sure you have Elixir, Node.js, and Postgres installed.
 
 1. Install dependencies with `mix deps.get`
-2. Create and migrate your database with `mix ecto.create && mix ecto.migrate`
-3. Start application with `mix phoenix.server`
+2. Start Postgres `postgres -D /usr/local/var/postgres`
+3. Create and migrate your database with `mix ecto.create && mix ecto.migrate`
+4. Start application with `mix phoenix.server`
 
 To be able to accept SMS messages locally you will need to use [ngrok](https://ngrok.com/)
 or a similar service. Once you have your tunnel setup you can [setup that URL as the
