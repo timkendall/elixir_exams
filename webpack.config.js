@@ -14,7 +14,7 @@ var isProduction = (env === 'prod');
 var plugins = [
   new ExtractTextPlugin('app.css'),
   new CopyWebpackPlugin([{
-    from: './web/static/assets'
+    from: './web/static/dashboard/assets'
   }, {
     from: './deps/phoenix_html/web/static/js/phoenix_html.js',
     to: 'js/phoenix_html.js'
@@ -34,7 +34,7 @@ if (isProduction) {
 }
 
 module.exports = {
-  entry: './web/static/js/index.js',
+  entry: './web/static/dashboard/src/app.jsx',
 
   output: {
     path: './priv/static/js',
