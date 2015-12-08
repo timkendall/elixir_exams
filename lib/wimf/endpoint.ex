@@ -1,7 +1,7 @@
 defmodule Wimf.Endpoint do
   use Phoenix.Endpoint, otp_app: :wimf
 
-  socket "/socket", Wimf.UserSocket
+  socket "/ws", Wimf.TextSocket
 
   # Serve at "/" the static files from "priv/static" directory.
   #

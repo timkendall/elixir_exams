@@ -7,11 +7,7 @@ defmodule Wimf.SMSController do
   @default_reply "What up sucka!"
 
   def craft_reply(text) do
-    # Create new `Reply`
-    #changeset = Reply.changeset(%Reply{}, %{
-      #message: @default_reply,
-      #text_id: text.id })
-
+    # Create new `Reply` and associate it with a `Text`
     reply = Ecto.Model.build(text, :reply, message: @default_reply)
 
     # Save it
@@ -19,10 +15,16 @@ defmodule Wimf.SMSController do
   end
 
   def incoming(conn, params) do
+    from = params["From"]
+    message = params["Body"]
+
     # Create a new `Text`
     changeset = Text.changeset(%Text{}, %{
-      from: params["From"],
-      message: params["Body"] })
+      from: from,
+      message: message })
+
+    # Emit over socket to client
+    Wimf.Endpoint.broadcast! "texts", "new:text", %{from: from, message: message}
 
     # Save the `Text`
     case Repo.insert(changeset) do

@@ -1,6 +1,7 @@
 defmodule Wimf.ExamTimeController do
   use Wimf.Web, :controller
 
+  #alias Phoenix.Socket.Broadcast
   alias Wimf.ExamTime
 
   plug :scrub_params, "exam_time" when action in [:create, :update]

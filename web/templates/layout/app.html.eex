@@ -8,7 +8,7 @@
     <meta name="author" content="">
 
     <title>Elixir Exams</title>
-    <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
+    <link rel="stylesheet" href="<%= static_path(@conn, "/js/app.css") %>">
   </head>
 
   <body>

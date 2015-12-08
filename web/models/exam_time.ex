@@ -6,7 +6,7 @@ defmodule Wimf.ExamTime do
     field :day_of_month, :integer
     field :day_of_week, :integer
     field :minutes, :integer
-    field :course_id_matches, {:array, :string}
+    field :course_id_matches, {:array, :string}, default: []
 
     timestamps
   end

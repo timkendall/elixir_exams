@@ -26,7 +26,7 @@ defmodule Wimf.Router do
     # RESTful resources
     resources "/texts", TextController, except: [:new, :edit]
     resources "/replies", ReplyController, except: [:new, :edit]
-    resources "/exam_times", ExamTimeController, except: [:new, :edit]
+    resources "/exam_times", ExamTimeController, except: []
 
     # Special route for Twilio webhook
     post "/webhooks/texts/incoming", SMSController, :incoming

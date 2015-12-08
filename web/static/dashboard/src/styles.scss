@@ -1,0 +1,38 @@
+body {
+  font-family: 'Open Sans';
+}
+
+h1 {
+  font-weight: 300;
+}
+
+.App {
+  margin: 0 0 0 40px;
+}
+
+.TextList {
+  margin: 0;
+  padding: 0;
+}
+
+.Text {
+  background: lighten(#D7D7DD, 5%);
+  padding: 10px;
+  border-radius: 4px;
+  max-width: 250px;
+  float: left;
+  clear: left;
+  margin: 0 0 20px 0;
+
+  h4, p {
+    margin: 0;
+  }
+
+  h4 {
+    font-size: 11px;
+  }
+
+  p {
+    font-size: 14px;
+  }
+}
