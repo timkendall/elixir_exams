@@ -43,7 +43,7 @@ module.exports = {
 
   resolve: {
     alias: {
-      phoenix: __dirname + '/deps/phoenix/web/static/js/phoenix.js'
+      phoenix: __dirname + '/web/static/dashboard/assets/phoenix-patched.js'
     }
   },
 
