@@ -11,7 +11,8 @@ export default function texts(state = initialState, action) {
         {
           id: state.reduce((maxId, todo) => Math.max(todo.id, maxId), -1) + 1,
           from: action.text.from,
-          message: action.text.message
+          message: action.text.message,
+          isServiceReply: action.text.from === 'Elixir'
         },
         ...state
       ]

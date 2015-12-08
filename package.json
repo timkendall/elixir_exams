@@ -1,6 +1,7 @@
 {
   "repository": {},
   "dependencies": {
+    "classnames": "^2.2.1",
     "history": "^1.14.0",
     "react": "^0.14.2",
     "react-motion": "^0.3.1",

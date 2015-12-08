@@ -4,12 +4,36 @@ defmodule Wimf.SMSController do
   alias Wimf.Text
   alias Wimf.Reply
 
-  @default_reply "What up sucka!"
+  @default_reply "Sorry I couldn't find an exam time for that."
 
-  def craft_reply(text) do
+  def normalize_course(course_id) do
+    String.downcase(course_id)
+  end
+
+  def match_reply(text) do
+    message = text.message
+      |> normalize_course
+
+    # TODO - Parse course ID from message
+    # TODO - Query database
+
+    cond do
+      String.contains? message, ["cpsc-350"] ->
+        craft_reply text, "Your final is Wednesday December 18th at 9:15am."
+      String.contains? message, ["art-101"] ->
+        craft_reply text, "Your final is Tuesday December 17th at 2:00pm."
+      String.contains? message, ["math-280"] ->
+        craft_reply text, "Congratulations, you don't have a final!"
+      true ->
+        craft_reply text, @default_reply
+    end
+  end
+
+  def craft_reply(text, reply_message) do
     # Create new `Reply` and associate it with a `Text`
-    reply = Ecto.Model.build(text, :reply, message: @default_reply)
-
+    reply = Ecto.Model.build(text, :reply, message: reply_message)
+    # Send over socket to client
+    Wimf.Endpoint.broadcast! "texts", "new:text", %{from: "Elixir", message: reply_message}
     # Save it
     Repo.insert(reply)
   end
@@ -31,9 +55,12 @@ defmodule Wimf.SMSController do
       {:ok, text} ->
         IO.inspect text
 
-        case craft_reply(text) do
+        case match_reply(text) do
           {:ok, reply} ->
             IO.inspect reply
+            conn
+            |> put_resp_content_type("text/xml")
+            |> render "incoming.xml", reply: reply.message
           {:error, changeset} ->
             IO.puts "Failed to save reply!!!!!"
         end
@@ -41,9 +68,5 @@ defmodule Wimf.SMSController do
       {:error, changeset} ->
         IO.puts "Failed to save text!!!!!"
     end
-
-    conn
-    |> put_resp_content_type("text/xml")
-    |> render "incoming.xml", reply: "Testing 123"
   end
 end
